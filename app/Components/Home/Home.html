@@ -2,13 +2,16 @@
   {{home.yo}}
   <div>
     <input type="text" 
-          placeholder="Type your location" 
-          ng-model="query"
-          style="margin-left: 40%">
+          placeholder="Where you going?"           
+          places-auto-complete
+          ng-model="Address"
+          on-place-changed="placeChanged()"
+          style="margin-left: 40%">          
     <br>
-    <map center="29.758093, -95.367534" 
-          zoom="10"
+    <map center="{{location}}" 
+          zoom="14"
           style="margin-left: 10%">
+          <marker position="{{location}}"></marker>
     </map>
   </div>
 </div>

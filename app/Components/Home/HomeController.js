@@ -2,13 +2,17 @@ angular
       .module('Kruise')
       .controller('HomeCtrl', HomeController);
       
-function HomeController($scope) {
-  var self = this;
-  self.yo = 'hey';
+function HomeController($scope) {  
+  $scope.location = [29.752621, -95.388652];
   
-  $scope.$watch('query', function(val){
+  $scope.$watch('Address', function(val){
     if(val){
       console.log(val);
     }
   });
+  
+  $scope.placeChanged = function placeChanged() {      
+    var place = this.getPlace();    
+    $scope.location = [place.geometry.location.lat(), place.geometry.location.lng()];
+  };
 }      
